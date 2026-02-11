@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mongo:
+    ports:
+      - "27017:27017"
+
+  backend:
+    ports:
+      - "8000:8000"
+    environment:
+      ENVIRONMENT: development
+    volumes:
+      - ./fintrack-be:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    ports:
+      - "3000:80"

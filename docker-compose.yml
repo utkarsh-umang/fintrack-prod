@@ -9,8 +9,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin123
       MONGO_INITDB_DATABASE: fintrack
-    ports:
-      - "27017:27017"
     volumes:
       - mongo_data:/data/db
     networks:
@@ -19,17 +17,14 @@ services:
   backend:
     build:
       context: ./fintrack-be
-      dockerfile: Dockerfile
     container_name: fintrack-backend
     restart: always
     environment:
       ENVIRONMENT: production
       MONGO_URL: mongodb://admin:admin123@mongo:27017/fintrack?authSource=admin
       DB_NAME: fintrack
-      HOST: 0.0.0.0
-      PORT: 8000
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     depends_on:
       - mongo
     networks:
@@ -38,11 +33,10 @@ services:
   frontend:
     build:
       context: ./internal-dashboard-fe
-      dockerfile: Dockerfile
     container_name: fintrack-frontend
     restart: always
-    ports:
-      - "3000:80"
+    expose:
+      - "80"
     networks:
       - fintrack-network
 
