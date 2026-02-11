@@ -1,6 +1,6 @@
 [submodule "internal-dashboard-fe"]
 	path = internal-dashboard-fe
-	url = git@github-personal:arnav-py9/internal-dashboard-fe.git
+	url = git@github.com:arnav-py9/internal-dashboard-fe.git
 [submodule "fintrack-be"]
 	path = fintrack-be
-	url = git@github-personal:arnav-py9/fintrack-be.git
+	url = git@github.com:arnav-py9/fintrack-be.git
