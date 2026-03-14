@@ -82,6 +82,27 @@ cd /srv/fintrack
 
 ---
 
+# 🚀 One-command deploy from your machine (`deploy.sh`)
+
+From your **local machine** (not the VM), you can run:
+
+```bash
+./deploy.sh
+```
+
+**Step 1:** The script opens Google auth so you can log in with your **personal** GCP account (and avoid using your work account).
+
+**Step 2:** It SSHs into your VM and runs `git pull`, submodule update, and `docker-compose up -d --build` (with `sudo` on the server).
+
+**Configure once** (edit `deploy.sh` or set env vars):
+
+- **Option A – GCP VM:** set `FINTRACK_GCP_PROJECT`, `FINTRACK_GCP_ZONE`, `FINTRACK_GCP_INSTANCE`.
+- **Option B – direct SSH:** set `FINTRACK_VM` (e.g. `utk_umang@your-vm-ip`).
+
+Optional: `FINTRACK_REPO_DIR` (default `/srv/fintrack`), `FINTRACK_BRANCH` (default `main`).
+
+---
+
 # 🔄 Updating Production (After Pushing Code)
 
 Whenever you push changes to GitHub:
